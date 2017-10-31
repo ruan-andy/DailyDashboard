@@ -122,6 +122,13 @@ body {
   50% { border-color: transparent }
 }
 
+#add{
+  font-size:20px;
+}
+#sort{
+  font-size:20px;
+}
+
 
 
 
