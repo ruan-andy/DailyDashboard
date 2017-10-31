@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <title>Bills</title>
-
   <h1>Bills</h1>
+  </head>
+<body>
+  <!--Navigation bar-->
+  <div id="nav-placeholder">
 
-  <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#about">Home</a>
-    <a href="bills.html">Bills</a>
-    <a href="medicine.html">Medications</a>
-    <a href="groceries">Groceries</a>
-    <a href="Tasks.html">Tasks</a>
-    <a href="Notes.html">Notes</a>
   </div>
 
-</head>
+  <script>
+  $(function(){
+    $("#nav-placeholder").load("navigation.html");
+  });
+  </script>
+  <!--end of Navigation bar-->
+</body>
 </html>
