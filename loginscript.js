@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     $('#username').focus();
 
     $('#submit').click(function() {
@@ -16,4 +16,4 @@ var ValidPassword = $('#password').val() === 'hgm2015'; // Password validate
             $('.error').css('display', 'block'); // show error msg
         }
     });
-});
+});*/
