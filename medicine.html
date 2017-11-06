@@ -7,6 +7,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+
 </head>
 <body>
 
@@ -26,16 +27,28 @@
     <div class="typewriter">
   <h1 id="SV">Medications</h1>
 
-
-  <div class="listMeds" id="mList">
-    <div class="boxedMed" id = "item1"><a href="medicine.html">
+  <script id="entry-template" type="text/x-handlebars-template">
+    <div class="medBox" id = "med{{index}}"><a href="medicine.html">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
-    <h3 id = "Med1"> Eye drops</h3>
-    	<p>Instructions: 2 drops per eye</p>
-      <p>Time: 3:00pm</p>
+    <h3 id = "title">{{title}}</h3>
+      <p>Instructions: {{notes}}</p>
+      <p>Time: {{time}}</p>
 
     </a>
-  </div>
+    </div>
+
+  </script>
+  
+  <div class="listMeds" id="mList">
+
+      <!--<div class="boxedMed" id = "item1"><a href="medicine.html">
+        <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+      <h3 id = "Med1"> Eye drops</h3>
+      	<p>Instructions: 2 drops per eye</p>
+        <p>Time: 3:00pm</p>
+
+      </a>
+    </div>-->
   </div>
 
 
@@ -54,6 +67,8 @@ function closeNav() {
     document.body.style.backgroundColor = "#d9d3d3";
 }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
 <script src="medscript.js"></script>
+
 </body>
 </html>
