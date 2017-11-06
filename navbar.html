@@ -34,6 +34,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="freelancer.css">
+    <title>Navbar</title>
 </head>
 <body>
 
@@ -49,6 +50,9 @@
 
   <span style="font-size:28px;font-family: Courier New; cursor:pointer" onclick="openNav()">&#9776; Menu</span>
     <div class="typewriter">
+      <h1 id="SV">...</h1>
+      <script>document.getElementById("SV").innerHTML = document.title;</script>
+    </div>
 
 <script>
 function openNav() {
@@ -60,6 +64,13 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
     document.body.style.backgroundColor = "#d9d3d3";
+}
+function titleName() {
+    //var path = window.location.pathname;
+    //var page = path.split("/").pop();
+    //var page = path.split(".html")[0];
+    //$("#SV").text(document.title);
+    document.getElementById("SV").innerHTML = document.title;
 }
 </script>
 <script src="script.js"></script>
