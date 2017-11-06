@@ -1,25 +1,55 @@
-<!---<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <ul>
-  <li><a href="index.html">Home</a></li>
-  <li><a href="bills.html">Bills</a></li>
-  <li><a href="medicine.html">Medications</a></li>
-  <li><a href="groceries.html">Groceries</a></li>
-  <li><a href="Tasks.html">Tasks</a></li>
-  <li><a href="Notes.html">Notes</a></li>
-</ul>
-</div>
+<!---<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="freelancer.css">
+  </head>
+  <body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="bills.html">Bills</a>
+    <a href="medicine.html">Medications</a>
+    <a href="groceries.html">Groceries</a>
+    <a href="Tasks.html">Tasks</a>
+    <a href="Notes.html">Notes</a>
+  </div>
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "#d9d3d3";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "#d9d3d3";
+  }
+  </script>
+  <script src="script.js"></script>
+</body>
+<html>
 --->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="freelancer.css">
+    <title>Bills</title>
+</head>
+<body>
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="index.html">Home</a>
+  <a href="#about">Home</a>
   <a href="bills.html">Bills</a>
   <a href="medicine.html">Medications</a>
-  <a href="groceries.html">Groceries</a>
+  <a href="groceries">Groceries</a>
   <a href="Tasks.html">Tasks</a>
   <a href="Notes.html">Notes</a>
 </div>
+
+  <span style="font-size:28px;font-family: Courier New; cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+    <div class="typewriter">
 
 <script>
 function openNav() {
@@ -27,7 +57,6 @@ function openNav() {
     document.getElementById("main").style.marginLeft = "250px";
     document.body.style.backgroundColor = "#d9d3d3";
 }
-
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
@@ -35,3 +64,5 @@ function closeNav() {
 }
 </script>
 <script src="script.js"></script>
+</body>
+</html>
