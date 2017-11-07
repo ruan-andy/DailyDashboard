@@ -2,7 +2,6 @@ $(document).ready(function() {
   $("#addMedsButton").click(openPopup);
   $("#cancelAddMed").click(closePopup);
   $("#addNewMed").click(addMeds);
-
 })
 var simpleData = {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'index': 1};
 var dataIndex = 0;
@@ -29,8 +28,6 @@ function openPopup(){
       modal.style.display = "none";
   }
 
-
-
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
       if (event.target == modal) {
@@ -39,14 +36,15 @@ function openPopup(){
   }
 }
 
+
 function closePopup(){
   // Get the modal
   var modal = document.getElementById('myModal');
   modal.style.display = "none";
 }
 
-function addMeds() {
 
+function addMeds() {
 
   console.log("Testing");
 
