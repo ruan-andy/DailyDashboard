@@ -48,7 +48,7 @@ function addMeds() {
 
   console.log("Testing");
 
-  if(dataIndex<3){
+  //if(dataIndex<3){
     //var person = prompt("Bill name:", "Electric bill");
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
@@ -58,7 +58,7 @@ function addMeds() {
     //$("#item1").toggle();
     var todayList = $("#mList");
     todayList.append(html);
-  } else{
+  /*} else{
     var source2 = $("#future-template").html();
     var template = Handlebars.compile(source2);
 
@@ -68,7 +68,7 @@ function addMeds() {
 
     currList.append(html);
     //list.append(box);
-  }
+  }*/
 
 
   dataIndex++;
