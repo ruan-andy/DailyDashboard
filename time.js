@@ -24,3 +24,5 @@ setInterval(GetClock,1000);
 }
 </script>
 <div id="clockbox"></div>
+
+$('#day').GetClock();
