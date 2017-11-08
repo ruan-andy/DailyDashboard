@@ -67,6 +67,20 @@
         cursor: pointer;
     }
 
+    .closeItem {
+        color: #000;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .closeItem:hover,
+    .closeItem:focus {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
     .modal-header {
         padding: 2px 16px;
         background-color: #5cb85c;
@@ -138,11 +152,9 @@ label {
   <a href="bills.html">Bills</a>
   <a href="medicine.html">Medications</a>
   <a href="groceries.html">Groceries</a>
-<!---  <a href="Tasks.html">Tasks</a>
-  <a href="Notes.html">Notes</a> --->
+  <!--<a href="Tasks.html">Tasks</a>
+  <a href="Notes.html">Notes</a>-->
 </div>
-
-
 
 
   <span style="font-size:28px;font-family: Courier New; cursor:pointer" onclick="openNav()">&#9776; Menu</span>
@@ -181,39 +193,36 @@ label {
         font-weight: bold;
       }
       </style>
-      <!--- END OF TIME --->
+
 
   <h1 id="SV">Groceries</h1>
 
   <script id="today-template" type="text/x-handlebars-template">
-    <div class="medBox" id = "med{{index}}"><a href="bills.html">
-      <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+    <div class="medBox" id = "med{{index}}">
+       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+      <span class="closeItem">&times;</span>
     <h3 id = "title">{{title}}</h3>
-      <p>Instructions: {{notes}}</p>
-      <p>Time: {{time}}</p>
+      <p>Day: {{date}}</p>
+      <p>Amount: {{Amount}}</p>
 
-    </a>
+
     </div>
 
   </script>
 
   <script id="future-template" type="text/x-handlebars-template">
-    <div class="medBox" id = "med{{index}}"><a href="bills.html">
+    <div class="medBox" id = "med{{index}}">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+      <span class="closeItem">&times;</span>
     <h3 id = "title">{{title}}</h3>
-      <p>Date: {{date}}</p>
-      <!--<p>Instructions: {{notes}}</p>
-      <p>Time: {{time}}</p>-->
-
-    </a>
+      <p>Day: {{date}}</p>
+      <p>Amount: {{Amount}}</p>
     </div>
 
   </script>
 
-
-
   <div class="listMeds" id="mList">
-    <h2>Upcoming Shopping List</h2>
+    <h2>Upcoming Bills</h2>
 
       <!--<div class="boxedMed" id = "item1"><a href="medicine.html">
         <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
@@ -230,11 +239,12 @@ label {
   <!-- The Modal -->
 <div id="myModal" class="modal">
 
+
   <!-- Modal content -->
   <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2>Add New Item</h2>
+        <h2>Add New Bill</h2>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -406,7 +416,7 @@ function closeNav() {
   <div class="boxedBills">
     <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
   <h3 id = "rent">Rent</h3>
-  	<p>Due: 11/07/2017</p>
+    <p>Due: 11/07/2017</p>
     <p id="rent">Make Payable to La Jolla Crossroads</p>
     <p>Amount: $800</p>
   </a>
@@ -415,7 +425,7 @@ function closeNav() {
   <div class="boxedMed">
     <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
   <h3 id = "creditcard"> Credit Card Bills</h3>
-  	<p>Due: 11/15/2017</p>
+    <p>Due: 11/15/2017</p>
     <p>MasterCard</p>
     <p >Amount: $1000</p>
   </a>
@@ -424,7 +434,7 @@ function closeNav() {
    <div class="boxedGroceries">
      <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
   <h3 id = "autobills">Auto Bills</h3>
-  	<p>Due: 11/20/2017</p>
+    <p>Due: 11/20/2017</p>
     <p>Car Loan Payment: $200</p>
     <p>Brokern Headlights: $50</p>
   </a>
