@@ -1,137 +1,155 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-  <title>Groceries</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style>
+    <link rel="stylesheet" type="text/css" href="freelancer.css">
+    <title>Medications</title>
 
-.addButton {
-  color: blue;
-}
-* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
 
-/* Modal Content */
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
+    .addButton {
+      color: blue;
+    }
+    * The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 100%;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
 
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
+    /* The Close Button */
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-.modal-header {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-}
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-.modal-body {padding: 2px 16px;}
+    .modal-header {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+    }
 
-.modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-}
+    .modal-body {padding: 2px 16px;}
+
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: #5cb85c;
+        color: white;
+    }
 
 input[type=text], select, textarea{
-width: 100%;
-padding: 12px;
-border: 1px solid #ccc;
-border-radius: 4px;
-box-sizing: border-box;
-resize: vertical;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
 }
 
 label {
-padding: 12px 12px 12px 0;
-display: inline-block;
+    padding: 12px 12px 12px 0;
+    display: inline-block;
 }
 
 .container {
-border-radius: 5px;
-background-color: #f2f2f2;
-padding: 20px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
 }
 
 .col-25 {
-float: left;
-width: 25%;
-margin-top: 6px;
+    float: left;
+    width: 25%;
+    margin-top: 6px;
 }
 
 .col-75 {
-float: left;
-width: 75%;
-margin-top: 6px;
+    float: left;
+    width: 75%;
+    margin-top: 6px;
 }
 
 /* Clear floats after the columns */
 .row:after {
-content: "";
-display: table;
-clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other
+@media (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+}*/
+
 </style>
-  <!--Navigation bar-->
-  <div id="nav-placeholder">
-  </div>
-  <script>
-  $(function(){
-    $("#nav-placeholder").load("navbar.html");
-  });
-  </script>
-  <!--end of Navigation bar-->
+
 </head>
 <body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="index.html">Home</a>
+  <a href="bills.html">Bills</a>
+  <a href="medicine.html">Medications</a>
+  <a href="groceries">Groceries</a>
+  <a href="Tasks.html">Tasks</a>
+  <a href="Notes.html">Notes</a>
+</div>
+
+
+
+  <span style="font-size:28px;font-family: Courier New; cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+    <div class="typewriter">
+  <h1 id="SV">Bills</h1>
+
   <script id="today-template" type="text/x-handlebars-template">
-    <div class="medBox" id = "med{{index}}"><a href="medicine.html">
+    <div class="medBox" id = "med{{index}}"><a href="bills.html">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
     <h3 id = "title">{{title}}</h3>
       <p>Instructions: {{notes}}</p>
@@ -143,7 +161,7 @@ clear: both;
   </script>
 
   <script id="future-template" type="text/x-handlebars-template">
-    <div class="medBox" id = "med{{index}}"><a href="medicine.html">
+    <div class="medBox" id = "med{{index}}"><a href="bills.html">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
     <h3 id = "title">{{title}}</h3>
       <p>Date: {{date}}</p>
@@ -156,7 +174,7 @@ clear: both;
   </script>
 
   <div class="listMeds" id="mList">
-    <h2>Today's medicine</h2>
+    <h2>Upcoming Bills</h2>
 
       <!--<div class="boxedMed" id = "item1"><a href="medicine.html">
         <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
@@ -168,11 +186,7 @@ clear: both;
     </div>-->
   </div>
 
-
-  <div class = "listAllMeds" id = "currList">
-    <h2>Currently Taking</h2>
-  </div>
-<button class="addButton" id="addMedsButton">Add New Medication</button>
+<button class="addButton" id="addBillsButton">Add New Bill</button>
 <br>
   <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -182,7 +196,7 @@ clear: both;
   <div class="modal-content">
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2>Add New Medication</h2>
+        <h2>Add New Bill</h2>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -194,20 +208,7 @@ clear: both;
             <label for="name">Name</label>
           </div>
           <div class="col-75">
-            <input type="text" id="name" name="medname" placeholder="Medication name..">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-25">
-            <label for="frequency">How often?</label>
-          </div>
-          <div class="col-75">
-            <select id="frequency" name="frequency">
-              <option value="once">Once</option>
-              <option value="daily">Daily</option>
-              <option value="weekly">Weekly</option>
-            </select>
+            <input type="text" id="name" name="medname" placeholder="Bill..">
           </div>
         </div>
         <div class="row">
@@ -215,30 +216,197 @@ clear: both;
             <label for="date">Date</label>
           </div>
           <div class="col-75">
-            <input type="text" id="date" name="date" placeholder="What date..?">
+            <input type="text" id="date" name="date" placeholder="MM/DD/YYYY?">
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="time">Time</label>
+            <label for="time">Amount</label>
           </div>
           <div class="col-75">
-            <input type="text" id="time" name="time" placeholder="What time?..">
+            <input type="text" id="time" name="time" placeholder="Amount?..">
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="notes">Medication Instructions</label>
+            <label for="notes">Additional Info</label>
           </div>
           <div class="col-75">
             <textarea id="notes" name="notes" placeholder="Write something.." style="height:100px"></textarea>
           </div>
         </div>
         <div class="row">
-          <button class="addButton" id="addNewMed">Add this medication</button>
-          <button class="cancel" id="cancelAddMed">Cancel</button>
+          <button class="addButton" id="addNewBill">Add this Bill</button>
+          <button class="cancel" id="cancelAddBill">Cancel</button>
         </div>
       </div>
-</body>
 
+      <!--<div class="row">
+          <span class="close">&times;</span>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="name">Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="name" name="medname" placeholder="Medication name..">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="frequency">How often?</label>
+        </div>
+        <div class="col-75">
+          <select id="frequency" name="frequency">
+            <option value="once">Once</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="date">Date</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="date" name="date" placeholder="What date..?">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="time">Time</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="time" name="time" placeholder="What time?..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="notes">Medication Instructions</label>
+        </div>
+        <div class="col-75">
+          <textarea id="notes" name="notes" placeholder="Write something.." style="height:100px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <button class="addButton" id="addNewMed">Add Medication</button>
+        <button class="cancel" id="cancelAddMed">Cancel</button>
+      </div>-->
+
+  </div>
+
+  <!--<div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Add New Medication</h2>
+    Name:
+    <input type="text" name="name">
+    <br> <br>
+    Date:
+    <input type="text" name="date">
+    <br> <br>
+    Time:
+    <input type="text" name="name">
+    <br> <br>
+    Instructions:
+    <input type="text" name="date">
+    <br> <br>
+    <br>
+    <button class="addButton" id="addNewMed">Add Medication</button>
+    <button class="cancel" id="cancelAddMed">Cancel</button>
+  </div>-->
+
+</div>
+
+<!--<button class="addButton" id="addMedsButton">Add New Medication</button>-->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "#d9d3d3";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "#d9d3d3";
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+<script src="script.js"></script>
+
+</body>
 </html>
+
+<!---<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="freelancer.css">
+    <title>Bills</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#about">Home</a>
+  <a href="bills.html">Bills</a>
+  <a href="medicine.html">Medications</a>
+  <a href="groceries">Groceries</a>
+  <a href="Tasks.html">Tasks</a>
+  <a href="Notes.html">Notes</a>
+</div>
+
+
+
+  <span style="font-size:28px;font-family: Courier New; cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+    <div class="typewriter">
+  <h1 id="SV">Bills</h1>
+
+<div id="bList">
+  <div class="boxedBills">
+    <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+  <h3 id = "rent">Rent</h3>
+  	<p>Due: 11/07/2017</p>
+    <p id="rent">Make Payable to La Jolla Crossroads</p>
+    <p>Amount: $800</p>
+  </a>
+  </div>
+
+  <div class="boxedMed">
+    <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+  <h3 id = "creditcard"> Credit Card Bills</h3>
+  	<p>Due: 11/15/2017</p>
+    <p>MasterCard</p>
+    <p >Amount: $1000</p>
+  </a>
+  </div>
+
+   <div class="boxedGroceries">
+     <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+  <h3 id = "autobills">Auto Bills</h3>
+  	<p>Due: 11/20/2017</p>
+    <p>Car Loan Payment: $200</p>
+    <p>Brokern Headlights: $50</p>
+  </a>
+  </div>
+</div>
+<button class="addButton" id="addBillsButton">Add</button>
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "#d9d3d3";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "#d9d3d3";
+}
+</script>
+<script src="script.js"></script>
+</body>
+</html>-->
