@@ -179,13 +179,14 @@ label {
         font-weight: bold;
       }
       </style>
-      <!--- END OF TIME --->
+      
       
   <h1 id="SV">Bills</h1>
 
   <script id="today-template" type="text/x-handlebars-template">
     <div class="medBox" id = "med{{index}}"><a href="bills.html">
-      <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+      <span class="close">&times;</span>
     <h3 id = "title">{{title}}</h3>
       <p>Day: {{date}}</p>
       <p>Amount: {{Amount}}</p>
@@ -198,9 +199,10 @@ label {
   <script id="future-template" type="text/x-handlebars-template">
     <div class="medBox" id = "med{{index}}"><a href="bills.html">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
+      <span class="close">&times;</span>
     <h3 id = "title">{{title}}</h3>
-      <!--<p>Day: {{date}}</p>
-      <p>Amount: {{Amount}}</p>-->
+      <!-<p>Day: {{date}}</p>
+      <p>Amount: {{Amount}}</p>
 
 
     </a>
