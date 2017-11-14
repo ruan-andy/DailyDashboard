@@ -11,7 +11,7 @@
     .addButton {
       color: blue;
     }
-    
+
     * The Modal (background) */
     .modal {
         display: none; /* Hidden by default */
@@ -199,27 +199,29 @@ label {
   <h1 id="SV">Groceries</h1>
 
   <script id="today-template" type="text/x-handlebars-template">
+    <form action="/action_page.php" method="get">
+      <input type="checkbox" onchange="toggleCheckbox(this)" name="bought" value="Bought"> <br>
+    </form>
     <div class="medBox" id = "med{{index}}">
        <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
       <span class="closeItem">&times;</span>
     <h3 id = "title">{{title}}</h3>
       <p>Expires on: {{date}}</p>
-      <p>Amount: {{Amount}}</p>
+      <p>Amount: {{time}}</p>
 
 
     </div>
 
   </script>
-
   <script id="future-template" type="text/x-handlebars-template">
     <div class="medBox" id = "med{{index}}">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
       <span class="closeItem">&times;</span>
     <h3 id = "title">{{title}}</h3>
-      <p>Day: {{date}}</p>
-      <p>Amount: {{Amount}}</p>
+      <p>Day: {{exp}}</p>
+      <p>Amount: {{amount}}</p>
+      <p>Note: {{note}}</p>
     </div>
-
   </script>
 
   <div class="listMeds" id="mList">
