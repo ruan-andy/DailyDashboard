@@ -119,9 +119,8 @@ function addMeds() {
 
 }
 
-span.onclick = function() {
-    modal.style.display = "none";
+
+function deleteItem(item_id){
+  //alert("Close clicked on " + item_id);
+  $("#" + item_id).parent().remove();
 }
-$('#closeItem').click(function(){
-    alert('Testing');
-});
