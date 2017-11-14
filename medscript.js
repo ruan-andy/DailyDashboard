@@ -66,6 +66,14 @@ $('#addNewMed').click(function(){
    }
 });
 
+//Loads meds from localStorage
+function  loadMeds() {
+  for(i=0; i<localStorage.length ; i++){
+
+  }
+}
+
+
 
 function addMeds() {
   if(cancelled == true){
@@ -85,6 +93,8 @@ function addMeds() {
 
   var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime,'date': userMedDate,
                     'freq' : userMedFreq, 'index' : dataIndex};
+
+  localStorage.setItem('med' + dataIndex, JSON.stringify(userMedData));
 
 //TODAY'S MEDICINES
   if(userMedDate == todaysDate){
@@ -122,7 +132,10 @@ function addMeds() {
 
 function deleteItem(item_id){
   //alert("Close clicked on " + item_id);
+  var med_id = $("#" + item_id).parent().attr('id');
+  //alert("Close clicked on " + med_id);
   $("#" + item_id).parent().remove();
+  localStorage.removeItem(med_id);
 }
 
 function editItem(item_id){
