@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $("#addBillsButton").click(openPopup);
   $("#cancelAddBill").click(closePopup);
-  $("#addNewBill").click(addMeds);
+  $("#addNewBill").click(addBills);
 })
 var simpleData = {'title': 'Rent', 'Amount': '$2000', 'date': 'Nov 15, 2017', 'index': 1};
 var dataIndex = 0;
@@ -57,12 +57,12 @@ $('#addNewBill').click(function(){
       alert('Amount cannot be left blank');
       cancelled = true;
    }
-   //cancelled = false;
    
 });
 
-function addMeds() {
+function addBills() {
   if(cancelled == true){
+      cancelled = false;
     return;
   }
   console.log("Testing");
@@ -75,8 +75,8 @@ function addMeds() {
     var userBillDate = document.getElementById('date').value;
     var userBillAmount = document.getElementById('amount').value;
     var userBillNotes = document.getElementById('notes').value;
-
-    var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': 1};
+    var dataIndex = 1;
+    var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': dataIndex};
 
     var html = template(userBillData);
 
@@ -84,14 +84,11 @@ function addMeds() {
     var todayList = $("#mList");
     todayList.append(html);
   
-
-
-
   dataIndex++;
-
   closePopup();
-
 }
+
+
 
 
 
