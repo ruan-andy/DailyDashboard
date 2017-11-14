@@ -43,23 +43,53 @@ function closePopup(){
   modal.style.display = "none";
 }
 
+var cancelled = false;
+var datePattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
+
+$('#addNewMed').click(function(){
+  if($('#name').val() == ''){
+     alert('Name cannot be left blank');
+     cancelled = true;
+  }
+   else if($('#date').val() == ''){
+      alert('Date cannot be left blank');
+      cancelled = true;
+   }
+   else if(!datePattern.test($('#date').val())){
+      alert('Date must be in format MM/DD/YYYY');
+      cancelled = true;
+   }
+
+   else if($('#time').val() == ''){
+      alert('Time cannot be left blank');
+      cancelled = true;
+   }
+});
+
 
 function addMeds() {
-
+  if(cancelled == true){
+    cancelled = false;
+    return;
+  }
   console.log("Testing");
 
-  if(dataIndex<3){
+  var d = new Date();
+  var todaysDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
+
+  var userMedName = document.getElementById('name').value;
+  var userMedFreq = document.getElementById('frequency').value;
+  var userMedDate = document.getElementById('date').value;
+  var userMedTime = document.getElementById('time').value;
+  var userMedNotes = document.getElementById('notes').value;
+
+  var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime,'date': userMedDate, 'freq' : userMedFreq};
+
+//TODAY'S MEDICINES
+  if(userMedDate == todaysDate){
     //var person = prompt("Bill name:", "Electric bill");
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
-
-    var userMedName = document.getElementById('name').value;
-    var userMedFreq = document.getElementById('frequency').value;
-    var userMedDate = document.getElementById('date').value;
-    var userMedTime = document.getElementById('time').value;
-    var userMedNotes = document.getElementById('notes').value;
-
-    var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime, 'index': 1};
 
     //var html = template(medData[dataIndex]);
     var html = template(userMedData);
@@ -67,11 +97,13 @@ function addMeds() {
     //$("#item1").toggle();
     var todayList = $("#mList");
     todayList.append(html);
-  } else{
+  }
+  //CURRENTLY TAKING
+  else{
     var source2 = $("#future-template").html();
     var template = Handlebars.compile(source2);
 
-    var html = template(medData[dataIndex]);
+    var html = template(userMedData);
     var currList = $("#currList");
     //var box = $("#item1");
 

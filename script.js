@@ -5,7 +5,7 @@ $(document).ready(function() {
 })
 var simpleData = {'title': 'Rent', 'Amount': '$2000', 'date': 'Nov 15, 2017', 'index': 1};
 var dataIndex = 0;
-var medData = [
+var billsData = [
 {'title': 'Rent', 'Amount': '2000', 'date': '11/6/17', 'index': 1},
 {'title': 'Car', 'Amount': '2000', 'date': '11/6/17', 'index': 2},
 {'title': 'Electric Bill', 'Amount': '100','date': '11/6/17', 'index': 3},
@@ -43,32 +43,48 @@ function closePopup(){
   modal.style.display = "none";
 }
 
+var cancelled = false;
+$('#addNewBill').click(function(){
+   if($('#name').val() == ''){
+     alert('Name cannot be left blank');
+      cancelled = true;
+   }
+   else if($('#date').val() == ''){
+      alert('Date cannot be left blank');
+      cancelled = true;
+   }
+   else if($('#amount').val() == ''){
+      alert('Amount cannot be left blank');
+      cancelled = true;
+   }
+   //cancelled = false;
+   
+});
 
 function addMeds() {
-
+  if(cancelled == true){
+    return;
+  }
   console.log("Testing");
-
   //if(dataIndex<3){
     //var person = prompt("Bill name:", "Electric bill");
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
 
-    var html = template(medData[dataIndex]);
+    var userBillName = document.getElementById('name').value;
+    var userBillDate = document.getElementById('date').value;
+    var userBillAmount = document.getElementById('amount').value;
+    var userBillNotes = document.getElementById('notes').value;
+
+    var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': 1};
+
+    var html = template(userBillData);
 
     //$("#item1").toggle();
     var todayList = $("#mList");
     todayList.append(html);
-  /*} else{
-    var source2 = $("#future-template").html();
-    var template = Handlebars.compile(source2);
+  
 
-    var html = template(medData[dataIndex]);
-    var currList = $("#currList");
-    //var box = $("#item1");
-
-    currList.append(html);
-    //list.append(box);
-  }*/
 
 
   dataIndex++;
@@ -76,3 +92,15 @@ function addMeds() {
   closePopup();
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
