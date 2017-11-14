@@ -5,7 +5,7 @@ $(document).ready(function() {
 })
 var simpleData = {'title': 'Rent', 'Amount': '$2000', 'date': 'Nov 15, 2017', 'index': 1};
 var dataIndex = 0;
-var medData = [
+var billsData = [
 {'title': 'Rent', 'Amount': '2000', 'date': '11/6/17', 'index': 1},
 {'title': 'Car', 'Amount': '2000', 'date': '11/6/17', 'index': 2},
 {'title': 'Electric Bill', 'Amount': '100','date': '11/6/17', 'index': 3},
@@ -53,7 +53,14 @@ function addMeds() {
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
 
-    var html = template(medData[dataIndex]);
+    var userBillName = document.getElementById('name').value;
+    var userBillDate = document.getElementById('date').value;
+    var userBillAmount = document.getElementById('amount').value;
+    var userBillNotes = document.getElementById('notes').value;
+
+    var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': 1};
+
+    var html = template(userBillData);
 
     //$("#item1").toggle();
     var todayList = $("#mList");
@@ -69,6 +76,7 @@ function addMeds() {
     currList.append(html);
     //list.append(box);
   }*/
+
 
 
   dataIndex++;
