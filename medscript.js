@@ -4,7 +4,7 @@ $(document).ready(function() {
   $("#addNewMed").click(addMeds);
 })
 var simpleData = {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'index': 1};
-var dataIndex = 0;
+var dataIndex = 1;
 var medData = [
 {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'date': '11/6/17', 'index': 1},
 {'title': 'Ear drops', 'notes': '2 drops per eye', 'time': '4:00pm', 'date': '11/6/17', 'index': 2},
@@ -55,10 +55,10 @@ $('#addNewMed').click(function(){
       alert('Date cannot be left blank');
       cancelled = true;
    }
-   else if(!datePattern.test($('#date').val())){
+  /* else if(!datePattern.test($('#date').val())){
       alert('Date must be in format MM/DD/YYYY');
       cancelled = true;
-   }
+   }*/
 
    else if($('#time').val() == ''){
       alert('Time cannot be left blank');
@@ -83,7 +83,8 @@ function addMeds() {
   var userMedTime = document.getElementById('time').value;
   var userMedNotes = document.getElementById('notes').value;
 
-  var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime,'date': userMedDate, 'freq' : userMedFreq};
+  var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime,'date': userMedDate,
+                    'freq' : userMedFreq, 'index' : dataIndex};
 
 //TODAY'S MEDICINES
   if(userMedDate == todaysDate){
@@ -117,3 +118,10 @@ function addMeds() {
   closePopup();
 
 }
+
+span.onclick = function() {
+    modal.style.display = "none";
+}
+$('#closeItem').click(function(){
+    alert('Testing');
+});
