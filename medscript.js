@@ -44,6 +44,8 @@ function closePopup(){
 }
 
 var cancelled = false;
+var datePattern =/^([0-9]{2})\/([0-9]{2})\/([0-9]{4})$/;
+
 $('#addNewMed').click(function(){
   if($('#name').val() == ''){
      alert('Name cannot be left blank');
@@ -51,6 +53,10 @@ $('#addNewMed').click(function(){
   }
    else if($('#date').val() == ''){
       alert('Date cannot be left blank');
+      cancelled = true;
+   }
+   else if(!datePattern.test($('#date').val())){
+      alert('Date must be in format MM/DD/YYYY');
       cancelled = true;
    }
 
