@@ -43,11 +43,19 @@ function closePopup(){
   modal.style.display = "none";
 }
 
+var cancelled = false;
+$('#addNewBill').click(function(){
+   if($('#date').val() == ''){
+      alert('Input can not be left blank');
+   }
+   cancelled = true;
+});
 
 function addMeds() {
-
+  if(cancelled = true){
+    return;
+  }
   console.log("Testing");
-
   //if(dataIndex<3){
     //var person = prompt("Bill name:", "Electric bill");
     var source = $("#today-template").html();
@@ -65,17 +73,7 @@ function addMeds() {
     //$("#item1").toggle();
     var todayList = $("#mList");
     todayList.append(html);
-  /*} else{
-    var source2 = $("#future-template").html();
-    var template = Handlebars.compile(source2);
-
-    var html = template(medData[dataIndex]);
-    var currList = $("#currList");
-    //var box = $("#item1");
-
-    currList.append(html);
-    //list.append(box);
-  }*/
+  
 
 
 
@@ -84,3 +82,15 @@ function addMeds() {
   closePopup();
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
