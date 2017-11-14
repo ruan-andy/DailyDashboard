@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  if(localStorage.length > 0) loadMeds();
   $("#addMedsButton").click(openPopup);
   $("#cancelAddMed").click(closePopup);
   $("#addNewMed").click(addMeds);
@@ -13,6 +14,9 @@ var medData = [
 {'title': 'Cholesterol pills', 'notes': '1 pill, with or without food', 'time': '7:00pm', 'date': '11/8/17', 'index': 5},
 {'title': 'Herbal tea', 'notes': '1 cup at night', 'time': '9:00pm', 'date': '11/9/17', 'index': 6}
 ]
+
+var d = new Date();
+var todaysDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 
 function openPopup(){
   // Get the modal
@@ -68,8 +72,36 @@ $('#addNewMed').click(function(){
 
 //Loads meds from localStorage
 function  loadMeds() {
-  for(i=0; i<localStorage.length ; i++){
+  for(i=1; i<=localStorage.length ; i++){
+    var medData = JSON.parse(localStorage.getItem('med' + i));
+    var medDate = medData['date'];
+    var medIndex = medData['index'];
+    //alert("The med num is " + medIndex);
 
+    //TODAY'S MEDICINES
+      if(medDate == todaysDate){
+
+        var source = $("#today-template").html();
+        var template = Handlebars.compile(source);
+
+        var html = template(medData);
+
+        //$("#item1").toggle();
+        var todayList = $("#mList");
+        todayList.append(html);
+      }
+      //CURRENTLY TAKING
+      else{
+        var source2 = $("#future-template").html();
+        var template = Handlebars.compile(source2);
+
+        var html = template(medData);
+        var currList = $("#currList");
+        //var box = $("#item1");
+
+        currList.append(html);
+        //list.append(box);
+      }
   }
 }
 
@@ -82,8 +114,7 @@ function addMeds() {
   }
   console.log("Testing");
 
-  var d = new Date();
-  var todaysDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
+
 
   var userMedName = document.getElementById('name').value;
   var userMedFreq = document.getElementById('frequency').value;
