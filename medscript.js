@@ -53,7 +53,16 @@ function addMeds() {
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
 
-    var html = template(medData[dataIndex]);
+    var userMedName = document.getElementById('name').value;
+    var userMedFreq = document.getElementById('frequency').value;
+    var userMedDate = document.getElementById('date').value;
+    var userMedTime = document.getElementById('time').value;
+    var userMedNotes = document.getElementById('notes').value;
+
+    var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime, 'index': 1};
+
+    //var html = template(medData[dataIndex]);
+    var html = template(userMedData);
 
     //$("#item1").toggle();
     var todayList = $("#mList");
