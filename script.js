@@ -46,9 +46,18 @@ function closePopup(){
 var cancelled = false;
 $('#addNewBill').click(function(){
    if($('#date').val() == ''){
-      alert('Input can not be left blank');
+      alert('Date cannot be left blank');
+      cancelled = true;
    }
-   cancelled = true;
+   if($('#name').val() == ''){
+      alert('Name cannot be left blank');
+      cancelled = true;
+   }
+   if($('#amount').val() == ''){
+      alert('Amount cannot be left blank');
+      cancelled = true;
+   }
+   
 });
 
 function addMeds() {
