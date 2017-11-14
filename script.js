@@ -45,23 +45,24 @@ function closePopup(){
 
 var cancelled = false;
 $('#addNewBill').click(function(){
-   if($('#date').val() == ''){
+   if($('#name').val() == ''){
+     alert('Name cannot be left blank');
+      cancelled = true;
+   }
+   else if($('#date').val() == ''){
       alert('Date cannot be left blank');
       cancelled = true;
    }
-   if($('#name').val() == ''){
-      alert('Name cannot be left blank');
-      cancelled = true;
-   }
-   if($('#amount').val() == ''){
+   else if($('#amount').val() == ''){
       alert('Amount cannot be left blank');
       cancelled = true;
    }
+   //cancelled = false;
    
 });
 
 function addMeds() {
-  if(cancelled = true){
+  if(cancelled == true){
     return;
   }
   console.log("Testing");
