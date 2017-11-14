@@ -124,3 +124,10 @@ function deleteItem(item_id){
   //alert("Close clicked on " + item_id);
   $("#" + item_id).parent().remove();
 }
+
+function editItem(item_id){
+  alert("Edit clicked on " + item_id);
+  deleteItem(item_id);
+  openPopup();
+  //NEED TO CHANGE to fill in fields with data
+}
