@@ -144,7 +144,7 @@ function deleteItem(item_id){
 }
 
 function editItem(item_id){
-  alert("Edit clicked on " + item_id);
+  //alert("Edit clicked on " + item_id);
   deleteItem(item_id);
   openPopup();
   //NEED TO CHANGE to fill in fields with data
