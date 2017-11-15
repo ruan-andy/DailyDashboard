@@ -116,7 +116,7 @@ function addMeds() {
     var html = template(userItemData);
 
     //$("#item1").toggle();
-    var todayList = $("#bList");
+    var todayList = $("#iList");
     todayList.append(html);
 
 
@@ -164,7 +164,7 @@ function  loadItems() {
         var template = Handlebars.compile(source);
         var html = template(itemData);
         //$("#item1").toggle();
-        var todayList = $("#bList");
+        var todayList = $("#iList");
         todayList.append(html);
   }
 }
