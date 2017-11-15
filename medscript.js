@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  console.log("Local storage length is " + localStorage.length);
+
   if(localStorage.length > 0) loadMeds();
   $("#addMedsButton").click(openPopup);
   $("#cancelAddMed").click(closePopup);
@@ -72,10 +74,11 @@ $('#addNewMed').click(function(){
 
 //Loads meds from localStorage
 function  loadMeds() {
+  var medIndex = 0;
   for(i=1; i<=localStorage.length ; i++){
     var medData = JSON.parse(localStorage.getItem('med' + i));
     var medDate = medData['date'];
-    var medIndex = medData['index'];
+    medIndex = medData['index'];
     //alert("The med num is " + medIndex);
 
     //TODAY'S MEDICINES
@@ -103,6 +106,7 @@ function  loadMeds() {
         //list.append(box);
       }
   }
+  dataIndex = medIndex + 1;
 }
 
 
@@ -126,6 +130,7 @@ function addMeds() {
                     'freq' : userMedFreq, 'index' : dataIndex};
 
   localStorage.setItem('med' + dataIndex, JSON.stringify(userMedData));
+  console.log("Local storage length is " + localStorage.length);
 
 //TODAY'S MEDICINES
   if(userMedDate == todaysDate){

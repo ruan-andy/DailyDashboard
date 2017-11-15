@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" type="text/css" href="freelancer.css">
     <title>Daily Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -59,17 +61,18 @@
 
   <div class="boxedBills"><a href="bills.html">
   <h3 id = "bills">Bills</h3>
-    <p id="listOfBills">Rent: 11/07/2017</p>
+    <!--<p id="listOfBills">Rent: 11/07/2017</p>
     <p id="listOfBills">Credit Card Bills: 11/15/2017</p>
-    <p id="listOfBills">Auto Bills: 11/20/2017</p>
+    <p id="listOfBills">Auto Bills: 11/20/2017</p>-->
+
   </a>
   </div>
 
-  <div class="boxedMed"><a href="medicine.html">
+  <div class="boxedMed" id = "medBox"><a href="medicine.html">
   <h3 id = "medication"> Medications</h3>
-    <p id="listOfMed">Eye Drops:   5:00pm</p>
+    <!--<p id="listOfMed">Eye Drops:   5:00pm</p>
     <p id="listOfMed">Insulin:     6:00pm</p>
-    <p id="listOfMed">Vitamins:    7:00pm</p>
+    <p id="listOfMed">Vitamins:    7:00pm</p>-->
   </a>
   </div>
 
@@ -80,6 +83,10 @@
     <p id="listOfBills">Bananas</p>
   </a>
   </div>
+
+  <script id="med-template" type="text/x-handlebars-template">
+    <p>"{{title}} : {{time}} "</p>
+  </script>
 
 
 
@@ -96,6 +103,8 @@ function closeNav() {
     document.body.style.backgroundColor = "#d9d3d3";
 }
 </script>
-<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+
+<script src="homescript.js"></script>
 </body>
 </html>
