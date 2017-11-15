@@ -47,12 +47,10 @@
         from {top:-300px; opacity:0}
         to {top:0; opacity:1}
     }
-
     @keyframes animatetop {
         from {top:-300px; opacity:0}
         to {top:0; opacity:1}
     }
-
     /* The Close Button */
     .close {
         color: white;
@@ -60,42 +58,35 @@
         font-size: 28px;
         font-weight: bold;
     }
-
     .close:hover,
     .close:focus {
         color: #000;
         text-decoration: none;
         cursor: pointer;
     }
-
     .closeItem {
         color: #000;
         float: right;
         font-size: 28px;
         font-weight: bold;
     }
-
     .closeItem:hover,
     .closeItem:focus {
         color: white;
         text-decoration: none;
         cursor: pointer;
     }
-
     .modal-header {
         padding: 2px 16px;
         background-color: #5cb85c;
         color: white;
     }
-
     .modal-body {padding: 2px 16px;}
-
     .modal-footer {
         padding: 2px 16px;
         background-color: #5cb85c;
         color: white;
     }
-
 input[type=text], select, textarea{
     width: 100%;
     padding: 12px;
@@ -104,44 +95,31 @@ input[type=text], select, textarea{
     box-sizing: border-box;
     resize: vertical;
 }
-
 label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-
 .container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 20px;
 }
-
 .col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
 }
-
 .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
 }
-
 /* Clear floats after the columns */
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other
-@media (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-}*/
-
 </style>
 
 </head>
@@ -194,19 +172,18 @@ label {
         font-weight: bold;
       }
       </style>
-
+      <!-- End of Clock --->
 
   <h1 id="SV">Groceries</h1>
 
   <script id="today-template" type="text/x-handlebars-template">
-    <form action="/action_page.php" method="get">
-      <input type="checkbox" onchange="toggleCheckbox(this)" name="bought" value="Bought"> <br>
-    </form>
     <div class="medBox" id = "med{{index}}">
+      <form action="/action_page.php" method="get">
+<!--        <input class = "checkbox" type="checkbox" onchange="toggleCheckbox(this, this.id)" name="bought" value="Bought"> <br>--->
+      </form>
        <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
-      <span class="closeItem">&times;</span>
+      <span class="closeItem" id="close{{index}}" onclick = "deleteItem(this.id)">&times;</span>
     <h3 id = "title">{{title}}</h3>
-      <p>Expires on: {{date}}</p>
       <p>Amount: {{time}}</p>
 
 
@@ -216,7 +193,7 @@ label {
   <script id="future-template" type="text/x-handlebars-template">
     <div class="medBox" id = "med{{index}}">
       <img height= "30px" width= "30px" align ="right"src="http://www.icon2s.com/wp-content/uploads/2013/07/black-white-metro-edit-icon.png"/>
-      <span class="closeItem">&times;</span>
+      <span class="closeItem" id="close{{index}}" onclick = "deleteItem(this.id)">&times;</span>
     <h3 id = "title">{{title}}</h3>
       <p>Day: {{exp}}</p>
       <p>Amount: {{amount}}</p>
@@ -224,15 +201,28 @@ label {
     </div>
   </script>
 
+<!---
   <div class="listMeds" id="mList">
     <h2>Shopping List</h2>
   </div>
 
 <button class="addButton" id="addBillsButton">Add New Item</button>
 <br>
-  <!-- The Modal -->
-<div id="myModal" class="modal">
+--->
 
+<div class="listMeds" id="mList">
+  <h2>Shopping List</h2>
+</div>
+
+<button class="addButton" id="addBillsButton">Add New Item</button>
+
+<div class = "listAllMeds" id = "currList">
+</div>
+  <h2>Bought</h2>
+<br>
+
+<!-- The Modal --->
+<div id="myModal" class="modal">
 
   <!-- Modal content -->
   <div class="modal-content">

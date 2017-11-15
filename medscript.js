@@ -1,16 +1,10 @@
-var numOfMeds = 0;
-
 $(document).ready(function() {
-  console.log("Local storage length is " + localStorage.length);
-  numOfMeds = localStorage.getItem('numOfMeds');
-  if(numOfMeds > 0) loadMeds();
   $("#addMedsButton").click(openPopup);
   $("#cancelAddMed").click(closePopup);
   $("#addNewMed").click(addMeds);
 })
 var simpleData = {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'index': 1};
-//var dataIndex = 1;
-
+var dataIndex = 1;
 var medData = [
 {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'date': '11/6/17', 'index': 1},
 {'title': 'Ear drops', 'notes': '2 drops per eye', 'time': '4:00pm', 'date': '11/6/17', 'index': 2},
@@ -19,9 +13,6 @@ var medData = [
 {'title': 'Cholesterol pills', 'notes': '1 pill, with or without food', 'time': '7:00pm', 'date': '11/8/17', 'index': 5},
 {'title': 'Herbal tea', 'notes': '1 cup at night', 'time': '9:00pm', 'date': '11/9/17', 'index': 6}
 ]
-
-var d = new Date();
-var todaysDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 
 function openPopup(){
   // Get the modal
@@ -75,45 +66,6 @@ $('#addNewMed').click(function(){
    }
 });
 
-//Loads meds from localStorage
-function  loadMeds() {
-  var medIndex = 0;
-
-  for(i=1; i<=numOfMeds ; i++){
-    var medData = JSON.parse(localStorage.getItem('med' + i));
-    var medDate = medData['date'];
-    medIndex = medData['index'];
-    //alert("The med num is " + medIndex);
-
-    //TODAY'S MEDICINES
-      if(medDate == todaysDate){
-
-        var source = $("#today-template").html();
-        var template = Handlebars.compile(source);
-
-        var html = template(medData);
-
-        //$("#item1").toggle();
-        var todayList = $("#mList");
-        todayList.append(html);
-      }
-      //CURRENTLY TAKING
-      else{
-        var source2 = $("#future-template").html();
-        var template = Handlebars.compile(source2);
-
-        var html = template(medData);
-        var currList = $("#currList");
-        //var box = $("#item1");
-
-        currList.append(html);
-        //list.append(box);
-      }
-  }
-//  numOfMeds = medIndex;
-}
-
-
 
 function addMeds() {
   if(cancelled == true){
@@ -122,10 +74,8 @@ function addMeds() {
   }
   console.log("Testing");
 
-  //Increase med counter
-  numOfMeds++;
-  localStorage.setItem('numOfMeds', numOfMeds);
-
+  var d = new Date();
+  var todaysDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 
   var userMedName = document.getElementById('name').value;
   var userMedFreq = document.getElementById('frequency').value;
@@ -134,10 +84,7 @@ function addMeds() {
   var userMedNotes = document.getElementById('notes').value;
 
   var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime,'date': userMedDate,
-                    'freq' : userMedFreq, 'index' : numOfMeds};
-
-  localStorage.setItem('med' + numOfMeds, JSON.stringify(userMedData));
-  console.log("Local storage length is " + localStorage.length);
+                    'freq' : userMedFreq, 'index' : dataIndex};
 
 //TODAY'S MEDICINES
   if(userMedDate == todaysDate){
@@ -166,12 +113,24 @@ function addMeds() {
   }
 
 
-  //dataIndex++;
+  dataIndex++;
 
   closePopup();
 
 }
 
+/*
+function deleteItem(item_id){
+  //alert("Close clicked on " + item_id);
+  $("#" + item_id).parent().remove();
+}
+
+function editItem(item_id){
+  alert("Edit clicked on " + item_id);
+  deleteItem(item_id);
+  openPopup();
+  //NEED TO CHANGE to fill in fields with data
+}*/
 
 function deleteItem(item_id){
   //alert("Close clicked on " + item_id);

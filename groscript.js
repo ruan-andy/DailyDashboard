@@ -45,13 +45,14 @@ function closePopup(){
   modal.style.display = "none";
 }
 
-function toggleCheckbox(element) {
+function toggleCheckbox(element, item_id) {
   if (element.checked) {
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
     var html = template(userMedData);
     var currList = $("#currList");
     currList.append(html);
+    deleteItem(item_id);
    }
 }
 
@@ -86,9 +87,35 @@ function addMeds() {
       var currList = $("#currList");
       //var box = $("#item1");
       //list.append(box);
-}
+    }
   dataIndex++;
-
   closePopup();
+  }
 
+function deleteItem(item_id){
+  //alert("Close clicked on " + item_id);
+  var med_id = $("#" + item_id).parent().attr('id');
+  //alert("Close clicked on " + med_id);
+  $("#" + item_id).parent().remove();
+
+  localStorage.removeItem(med_id);
+  //numOfMeds--;
+  //localStorage.setItem('numOfMeds', numOfMeds);
+}
+
+function editItem(item_id){
+  alert("Edit clicked on " + item_id);
+  deleteItem(item_id);
+  openPopup();
+  //NEED TO CHANGE to fill in fields with data
+}
+
+function delBoxes(){
+    var boxes = document.getElementsByClassName('checkbox');
+    for(var i = 0; i<boxes.length; i++){
+        box = boxes[i];
+        if(box.checked){
+            box.parentNode.removeChild(box);
+        }
+    }
 }
