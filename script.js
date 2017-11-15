@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //if(localStorage.length > 0) loadMeds();
+  if(localStorage.length > 0) loadMeds();
   $("#addBillsButton").click(openPopup);
   $("#cancelAddBill").click(closePopup);
   $("#addNewBill").click(addBills);
@@ -69,7 +69,7 @@ function  loadMeds() {
     //alert("The med num is " + medIndex);
 
     //TODAY'S MEDICINES
-      if(medDate == todaysDate){
+      
 
         var source = $("#today-template").html();
         var template = Handlebars.compile(source);
@@ -77,21 +77,11 @@ function  loadMeds() {
         var html = template(medData);
 
         //$("#item1").toggle();
-        var todayList = $("#mList");
+        var todayList = $("#bList");
         todayList.append(html);
-      }
+      
       //CURRENTLY TAKING
-      else{
-        var source2 = $("#future-template").html();
-        var template = Handlebars.compile(source2);
-
-        var html = template(medData);
-        var currList = $("#currList");
-        //var box = $("#item1");
-
-        currList.append(html);
-        //list.append(box);
-      }
+      
   }
 }
 
@@ -113,10 +103,12 @@ function addBills() {
     var dataIndex = 1;
     var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': dataIndex};
 
+    localStorage.setItem('med' + dataIndex, JSON.stringify(userBillData));
+
     var html = template(userBillData);
 
     //$("#item1").toggle();
-    var todayList = $("#mList");
+    var todayList = $("#bList");
     todayList.append(html);
   
   dataIndex++;
