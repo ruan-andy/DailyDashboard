@@ -1,19 +1,28 @@
-/*$(document).ready(function() {
-    $('#username').focus();
+$(document).ready(function() {
+  
+})
 
-    $('#submit').click(function() {
+var cancelled = false;
+$('#submit').click(function(){
+   if($('#username').val() != 'user1'){
+     alert('username is user1');
+      cancelled = true;
+   }
+   else if($('#password').val() != 'password'){
+      alert('password is password');
+      cancelled = true;
+   }
+   
+});
 
-        event.preventDefault(); // prevent PageReLoad
+$('#submit').click(function(){
 
-       var ValidEmail = $('#username').val() === 'invitado'; // User validate
-var ValidPassword = $('#password').val() === 'hgm2015'; // Password validate
+    if(cancelled == true){
+        window.location.href="login.html";
+    }
+    else{
+        window.location.href="index.html";
+    }
 
-        if (ValidEmail === true && ValidPassword === true) { // if ValidEmail & ValidPassword
-            $('.valid').css('display', 'block');
-            window.location = "http://arkev.com"; // go to home.html
-        }
-        else {
-            $('.error').css('display', 'block'); // show error msg
-        }
-    });
-});*/
+
+});
