@@ -17,6 +17,7 @@ function loadDashboardData(){
 //Bills
 numOfBills = localStorage.getItem('numOfBills');
 if(numOfBills > 0) {
+  $('#noBills').hide();
   for(i=1; i<=numOfBills ; i++){
     var billData = JSON.parse(localStorage.getItem('bill' + i));
     var billDate = billData['date'];
@@ -38,12 +39,17 @@ if(numOfBills > 0) {
 
   }
 }
+else {
+  $('#noBills').show();
+
+}
 
 
 
 //MEDICINES
 numOfMeds = localStorage.getItem('numOfMeds');
 if(numOfMeds > 0){
+  $('#noMeds').hide();
   for(i=1; i<=numOfMeds ; i++){
     var medData = JSON.parse(localStorage.getItem('med' + i));
     var medDate = medData['date'];
@@ -75,6 +81,11 @@ if(numOfMeds > 0){
         //list.append(box);
       }*/
   }
+
+
+}
+else {
+    $('#noMeds').show();
 }
 
 }
