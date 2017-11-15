@@ -24,17 +24,17 @@ if(numOfBills > 0) {
     //alert("The med num is " + medIndex);
     console.log("The bill num is " + billIndex);
     //TODAY'S MEDICINES
-      if(medDate == todaysDate){
+
         //alert("Testing med load");
         var source = $("#bill-template").html();
         var template = Handlebars.compile(source);
 
-        var html = template(medData);
+        var html = template(billData);
 
         //$("#item1").toggle();
         var billList = $("#billBox");
         billList.append(html);
-      }
+
 
   }
 }
