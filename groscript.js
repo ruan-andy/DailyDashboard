@@ -5,6 +5,7 @@ $(document).ready(function() {
 })
 var simpleData = {'title': 'Vallia Ice Cream', 'Amount': '1 Gallon', 'date': 'Nov 15, 2017', 'index': 1};
 var dataIndex = 0;
+var numOfItems = 0;
 var medData = [
 {'title': 'Bananas', 'Amount': '1', 'date': 'N/A', 'index': 1},
 {'title': 'eggs', 'Amount': '1 Dozen', 'date': '11/17/17', 'index': 2},
@@ -58,7 +59,7 @@ function toggleCheckbox(element, item_id) {
 
 
 function addMeds() {
-
+/*
   console.log("Testing");
     if(dataIndex<3){
       //var person = prompt("Bill name:", "Electric bill");
@@ -89,6 +90,37 @@ function addMeds() {
       //list.append(box);
     }
   dataIndex++;
+  closePopup();*/
+/*
+  if(cancelled == true){
+      cancelled = false;
+    return;
+  }*/
+
+//updating bill count
+  numOfItems++;
+  localStorage.setItem('numOfItems', numOfItems);
+
+
+    var source = $("#today-template").html();
+    var template = Handlebars.compile(source);
+
+    var name = document.getElementById('name').value;
+    var num = document.getElementById('time').value;
+    //var exp = document.getElementById('date').value;
+    //var userMedTime = document.getElementById('time').value;
+    //var note = document.getElementById('notes').value;
+    var userItemData = {'title': name, 'time': num, 'index': 1};
+    localStorage.setItem('item' + numOfItems , JSON.stringify(userItemData));
+
+    var html = template(userItemData);
+
+    //$("#item1").toggle();
+    var todayList = $("#bList");
+    todayList.append(html);
+
+
+
   closePopup();
   }
 
@@ -118,4 +150,25 @@ function delBoxes(){
             box.parentNode.removeChild(box);
         }
     }
+}
+
+function  loadItems() {
+  numOfItems = localStorage.getItem('numOfItems');
+  for(i=1; i<=numOfItems; i++){
+    var medData = JSON.parse(localStorage.getItem('title' + i));
+    var medDate = medData['date'];
+    var itemIndex = medData['index'];
+    //alert("The med num is " + medIndex);
+
+    //TODAY'S MEDICINES
+
+        var source = $("#today-template").html();
+        var template = Handlebars.compile(source);
+
+        var html = template(medData);
+
+        //$("#item1").toggle();
+        var todayList = $("#bList");
+        todayList.append(html);
+  }
 }
