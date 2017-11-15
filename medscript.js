@@ -1,13 +1,16 @@
+var numOfMeds = 0;
+
 $(document).ready(function() {
   console.log("Local storage length is " + localStorage.length);
-
-  if(localStorage.length > 0) loadMeds();
+  numOfMeds = localStorage.getItem('numOfMeds');
+  if(numOfMeds > 0) loadMeds();
   $("#addMedsButton").click(openPopup);
   $("#cancelAddMed").click(closePopup);
   $("#addNewMed").click(addMeds);
 })
 var simpleData = {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'index': 1};
-var dataIndex = 1;
+//var dataIndex = 1;
+
 var medData = [
 {'title': 'Eye drops', 'notes': '2 drops per eye', 'time': '3:00pm', 'date': '11/6/17', 'index': 1},
 {'title': 'Ear drops', 'notes': '2 drops per eye', 'time': '4:00pm', 'date': '11/6/17', 'index': 2},
@@ -75,7 +78,8 @@ $('#addNewMed').click(function(){
 //Loads meds from localStorage
 function  loadMeds() {
   var medIndex = 0;
-  for(i=1; i<=localStorage.length ; i++){
+
+  for(i=1; i<=numOfMeds ; i++){
     var medData = JSON.parse(localStorage.getItem('med' + i));
     var medDate = medData['date'];
     medIndex = medData['index'];
@@ -106,7 +110,7 @@ function  loadMeds() {
         //list.append(box);
       }
   }
-  dataIndex = medIndex + 1;
+//  numOfMeds = medIndex;
 }
 
 
@@ -118,6 +122,9 @@ function addMeds() {
   }
   console.log("Testing");
 
+  //Increase med counter
+  numOfMeds++;
+  localStorage.setItem('numOfMeds', numOfMeds);
 
 
   var userMedName = document.getElementById('name').value;
@@ -127,9 +134,9 @@ function addMeds() {
   var userMedNotes = document.getElementById('notes').value;
 
   var userMedData = {'title': userMedName, 'notes': userMedNotes, 'time': userMedTime,'date': userMedDate,
-                    'freq' : userMedFreq, 'index' : dataIndex};
+                    'freq' : userMedFreq, 'index' : numOfMeds};
 
-  localStorage.setItem('med' + dataIndex, JSON.stringify(userMedData));
+  localStorage.setItem('med' + numOfMeds, JSON.stringify(userMedData));
   console.log("Local storage length is " + localStorage.length);
 
 //TODAY'S MEDICINES
@@ -159,7 +166,7 @@ function addMeds() {
   }
 
 
-  dataIndex++;
+  //dataIndex++;
 
   closePopup();
 
@@ -171,7 +178,10 @@ function deleteItem(item_id){
   var med_id = $("#" + item_id).parent().attr('id');
   //alert("Close clicked on " + med_id);
   $("#" + item_id).parent().remove();
+
   localStorage.removeItem(med_id);
+  numOfMeds--;
+  localStorage.setItem('numOfMeds', numOfMeds);
 }
 
 function editItem(item_id){

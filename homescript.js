@@ -7,11 +7,44 @@ $(document).ready(function() {
 var d = new Date();
 var todaysDate = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
 
+var numOfBills = 0;
+var numOfMeds = 0;
+
 
 function loadDashboardData(){
   //load 3 of each bill/med/groceries
 
-  for(i=1; i<=localStorage.length ; i++){
+//Bills
+numOfBills = localStorage.getItem('numOfBills');
+if(numOfBills > 0) {
+  for(i=1; i<=numOfBills ; i++){
+    var billData = JSON.parse(localStorage.getItem('bill' + i));
+    var billDate = billData['date'];
+    var billIndex = billData['index'];
+    //alert("The med num is " + medIndex);
+    console.log("The bill num is " + billIndex);
+    //TODAY'S MEDICINES
+      if(medDate == todaysDate){
+        //alert("Testing med load");
+        var source = $("#bill-template").html();
+        var template = Handlebars.compile(source);
+
+        var html = template(medData);
+
+        //$("#item1").toggle();
+        var billList = $("#billBox");
+        billList.append(html);
+      }
+
+  }
+}
+
+
+
+//MEDICINES
+numOfMeds = localStorage.getItem('numOfMeds');
+if(numOfMeds > 0){
+  for(i=1; i<=numOfMeds ; i++){
     var medData = JSON.parse(localStorage.getItem('med' + i));
     var medDate = medData['date'];
     var medIndex = medData['index'];
@@ -42,4 +75,6 @@ function loadDashboardData(){
         //list.append(box);
       }*/
   }
+}
+
 }

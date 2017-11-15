@@ -59,7 +59,7 @@
       <!--- END OF TIME --->
   <h1 id="SV">Daily Dashboard</h1>
 
-  <div class="boxedBills"><a href="bills.html">
+  <div class="boxedBills" id = "billBox"><a href="bills.html">
   <h3 id = "bills">Bills</h3>
     <!--<p id="listOfBills">Rent: 11/07/2017</p>
     <p id="listOfBills">Credit Card Bills: 11/15/2017</p>
@@ -83,6 +83,10 @@
     <p id="listOfBills">Bananas</p>
   </a>
   </div>
+
+  <script id="bill-template" type="text/x-handlebars-template">
+    <p>"{{title}} : {{date}} "</p>
+  </script>
 
   <script id="med-template" type="text/x-handlebars-template">
     <p>"{{title}} : {{time}} "</p>

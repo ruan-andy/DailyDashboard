@@ -5,7 +5,7 @@ $(document).ready(function() {
   $("#addNewBill").click(addBills);
 })
 var simpleData = {'title': 'Rent', 'Amount': '$2000', 'date': 'Nov 15, 2017', 'index': 1};
-var dataIndex = 1;
+var numOfBills = 0;
 var billsData = [
 {'title': 'Rent', 'Amount': '2000', 'date': '11/6/17', 'index': 1},
 {'title': 'Car', 'Amount': '2000', 'date': '11/6/17', 'index': 2},
@@ -58,18 +58,19 @@ $('#addNewBill').click(function(){
       alert('Amount cannot be left blank');
       cancelled = true;
    }
-   
+
 });
 
 function  loadBills() {
-  for(i=1; i<=localStorage.length ; i++){
+  numOfBills = localStorage.getItem('numOfBills');
+  for(i=1; i<=numOfBills; i++){
     var medData = JSON.parse(localStorage.getItem('bill' + i));
     var medDate = medData['date'];
     var billIndex = medData['index'];
     //alert("The med num is " + medIndex);
 
     //TODAY'S MEDICINES
-      
+
 
         var source = $("#today-template").html();
         var template = Handlebars.compile(source);
@@ -79,11 +80,11 @@ function  loadBills() {
         //$("#item1").toggle();
         var todayList = $("#bList");
         todayList.append(html);
-      
+
       //CURRENTLY TAKING
-      
+
   }
-  dataIndex = billIndex + 1;
+  //numOfBills = billIndex;
 }
 
 function addBills() {
@@ -92,7 +93,13 @@ function addBills() {
     return;
   }
   console.log("Testing");
-  //if(dataIndex<3){
+
+//updating bill count
+  numOfBills++;
+  localStorage.setItem('numOfBills', numOfBills);
+
+
+  //if(numOfBills<3){
     //var person = prompt("Bill name:", "Electric bill");
     var source = $("#today-template").html();
     var template = Handlebars.compile(source);
@@ -101,18 +108,19 @@ function addBills() {
     var userBillDate = document.getElementById('date').value;
     var userBillAmount = document.getElementById('amount').value;
     var userBillNotes = document.getElementById('notes').value;
-    //var dataIndex = 1;
-    var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': dataIndex};
+    //var numOfBills = 1;
+    var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': numOfBills};
 
-    localStorage.setItem('bill' + dataIndex, JSON.stringify(userBillData));
+    localStorage.setItem('bill' + numOfBills , JSON.stringify(userBillData));
 
     var html = template(userBillData);
 
     //$("#item1").toggle();
     var todayList = $("#bList");
     todayList.append(html);
-  
-  dataIndex++;
+
+
+
   closePopup();
 }
 
@@ -122,17 +130,6 @@ function deleteItem(item_id){
   //alert("Close clicked on " + med_id);
   $("#" + item_id).parent().remove();
   localStorage.removeItem(med_id);
+  numOfBills--;
+  localStorage.setItem('numOfBills', numOfBills);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
