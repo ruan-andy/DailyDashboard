@@ -1,10 +1,11 @@
 $(document).ready(function() {
+  if(localStorage.length > 0) loadBills();
   $("#addBillsButton").click(openPopup);
   $("#cancelAddBill").click(closePopup);
   $("#addNewBill").click(addBills);
 })
 var simpleData = {'title': 'Rent', 'Amount': '$2000', 'date': 'Nov 15, 2017', 'index': 1};
-var dataIndex = 0;
+var dataIndex = 1;
 var billsData = [
 {'title': 'Rent', 'Amount': '2000', 'date': '11/6/17', 'index': 1},
 {'title': 'Car', 'Amount': '2000', 'date': '11/6/17', 'index': 2},
@@ -60,6 +61,30 @@ $('#addNewBill').click(function(){
    
 });
 
+function  loadBills() {
+  for(i=1; i<=localStorage.length ; i++){
+    var medData = JSON.parse(localStorage.getItem('bill' + i));
+    var medDate = medData['date'];
+    var medIndex = medData['index'];
+    //alert("The med num is " + medIndex);
+
+    //TODAY'S MEDICINES
+      
+
+        var source = $("#today-template").html();
+        var template = Handlebars.compile(source);
+
+        var html = template(medData);
+
+        //$("#item1").toggle();
+        var todayList = $("#bList");
+        todayList.append(html);
+      
+      //CURRENTLY TAKING
+      
+  }
+}
+
 function addBills() {
   if(cancelled == true){
       cancelled = false;
@@ -75,19 +100,28 @@ function addBills() {
     var userBillDate = document.getElementById('date').value;
     var userBillAmount = document.getElementById('amount').value;
     var userBillNotes = document.getElementById('notes').value;
-    var dataIndex = 1;
+    //var dataIndex = 1;
     var userBillData = {'title': userBillName, 'Amount': userBillAmount, 'date': userBillDate, 'notes': userBillNotes, 'index': dataIndex};
+
+    localStorage.setItem('bill' + dataIndex, JSON.stringify(userBillData));
 
     var html = template(userBillData);
 
     //$("#item1").toggle();
-    var todayList = $("#mList");
+    var todayList = $("#bList");
     todayList.append(html);
   
   dataIndex++;
   closePopup();
 }
 
+function deleteItem(item_id){
+  //alert("Close clicked on " + item_id);
+  var med_id = $("#" + item_id).parent().attr('id');
+  //alert("Close clicked on " + med_id);
+  $("#" + item_id).parent().remove();
+  localStorage.removeItem(med_id);
+}
 
 
 
