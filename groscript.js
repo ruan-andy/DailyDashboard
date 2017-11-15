@@ -155,18 +155,14 @@ function delBoxes(){
 function  loadItems() {
   numOfItems = localStorage.getItem('numOfItems');
   for(i=1; i<=numOfItems; i++){
-    var medData = JSON.parse(localStorage.getItem('title' + i));
-    var medDate = medData['date'];
-    var itemIndex = medData['index'];
+    var itemData = JSON.parse(localStorage.getItem('item' + i));
+    var itemDate = itemData['time'];
+    var itemIndex = itemData['index'];
     //alert("The med num is " + medIndex);
-
     //TODAY'S MEDICINES
-
         var source = $("#today-template").html();
         var template = Handlebars.compile(source);
-
-        var html = template(medData);
-
+        var html = template(itemData);
         //$("#item1").toggle();
         var todayList = $("#bList");
         todayList.append(html);
