@@ -65,7 +65,7 @@ function  loadBills() {
   for(i=1; i<=localStorage.length ; i++){
     var medData = JSON.parse(localStorage.getItem('bill' + i));
     var medDate = medData['date'];
-    var medIndex = medData['index'];
+    var billIndex = medData['index'];
     //alert("The med num is " + medIndex);
 
     //TODAY'S MEDICINES
@@ -83,6 +83,7 @@ function  loadBills() {
       //CURRENTLY TAKING
       
   }
+  dataIndex = billIndex + 1;
 }
 
 function addBills() {
