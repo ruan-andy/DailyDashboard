@@ -17,6 +17,7 @@ function loadDashboardData(){
 //Bills
 numOfBills = localStorage.getItem('numOfBills');
 if(numOfBills > 0) {
+  $('#noBills').hide();
   for(i=1; i<=numOfBills ; i++){
     var billData = JSON.parse(localStorage.getItem('bill' + i));
     var billDate = billData['date'];
@@ -24,19 +25,23 @@ if(numOfBills > 0) {
     //alert("The med num is " + medIndex);
     console.log("The bill num is " + billIndex);
     //TODAY'S MEDICINES
-      if(medDate == todaysDate){
+
         //alert("Testing med load");
         var source = $("#bill-template").html();
         var template = Handlebars.compile(source);
 
-        var html = template(medData);
+        var html = template(billData);
 
         //$("#item1").toggle();
         var billList = $("#billBox");
         billList.append(html);
-      }
+
 
   }
+}
+else {
+  $('#noBills').show();
+
 }
 
 
@@ -44,6 +49,7 @@ if(numOfBills > 0) {
 //MEDICINES
 numOfMeds = localStorage.getItem('numOfMeds');
 if(numOfMeds > 0){
+  $('#noMeds').hide();
   for(i=1; i<=numOfMeds ; i++){
     var medData = JSON.parse(localStorage.getItem('med' + i));
     var medDate = medData['date'];
@@ -75,6 +81,11 @@ if(numOfMeds > 0){
         //list.append(box);
       }*/
   }
+
+
+}
+else {
+    $('#noMeds').show();
 }
 
 }

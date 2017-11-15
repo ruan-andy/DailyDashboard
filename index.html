@@ -61,6 +61,7 @@
 
   <div class="boxedBills" id = "billBox"><a href="bills.html">
   <h3 id = "bills">Bills</h3>
+    <p id="noBills">No upcoming bills</p>
     <!--<p id="listOfBills">Rent: 11/07/2017</p>
     <p id="listOfBills">Credit Card Bills: 11/15/2017</p>
     <p id="listOfBills">Auto Bills: 11/20/2017</p>-->
@@ -70,6 +71,7 @@
 
   <div class="boxedMed" id = "medBox"><a href="medicine.html">
   <h3 id = "medication"> Medications</h3>
+    <p id="noMeds">No medications today</p>
     <!--<p id="listOfMed">Eye Drops:   5:00pm</p>
     <p id="listOfMed">Insulin:     6:00pm</p>
     <p id="listOfMed">Vitamins:    7:00pm</p>-->
@@ -78,18 +80,23 @@
 
    <div class="boxedGroceries"><a href="groceries.html">
   <h3 id = "bills">Groceries</h3>
-    <p id="listOfBills">Apples</p>
+    <p id="noGroc">No groceries in your list</p>
+  <!--  <p id="listOfBills">Apples</p>
     <p id="listOfBills">Carrots</p>
-    <p id="listOfBills">Bananas</p>
+    <p id="listOfBills">Bananas</p>-->
   </a>
   </div>
 
   <script id="bill-template" type="text/x-handlebars-template">
-    <p>"{{title}} : {{date}} "</p>
+    <p>{{title}} : {{date}} </p>
   </script>
 
   <script id="med-template" type="text/x-handlebars-template">
-    <p>"{{title}} : {{time}} "</p>
+    <p>{{title}} : {{time}} </p>
+  </script>
+
+  <script id="groc-template" type="text/x-handlebars-template">
+    <p>{{title}} : {{time}} </p>
   </script>
 
 
