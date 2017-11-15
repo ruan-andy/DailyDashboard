@@ -114,7 +114,7 @@ function loadDashboardData(){
     }
   }
   else {
-    $('#noBills').show();
+    $('#noGroc').show();
 
   }
 
