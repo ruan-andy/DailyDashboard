@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  //if(localStorage.length > 0) loadMeds();
   $("#addBillsButton").click(openPopup);
   $("#cancelAddBill").click(closePopup);
   $("#addNewBill").click(addBills);
@@ -60,6 +61,40 @@ $('#addNewBill').click(function(){
    
 });
 
+function  loadMeds() {
+  for(i=1; i<=localStorage.length ; i++){
+    var medData = JSON.parse(localStorage.getItem('med' + i));
+    var medDate = medData['date'];
+    var medIndex = medData['index'];
+    //alert("The med num is " + medIndex);
+
+    //TODAY'S MEDICINES
+      if(medDate == todaysDate){
+
+        var source = $("#today-template").html();
+        var template = Handlebars.compile(source);
+
+        var html = template(medData);
+
+        //$("#item1").toggle();
+        var todayList = $("#mList");
+        todayList.append(html);
+      }
+      //CURRENTLY TAKING
+      else{
+        var source2 = $("#future-template").html();
+        var template = Handlebars.compile(source2);
+
+        var html = template(medData);
+        var currList = $("#currList");
+        //var box = $("#item1");
+
+        currList.append(html);
+        //list.append(box);
+      }
+  }
+}
+
 function addBills() {
   if(cancelled == true){
       cancelled = false;
@@ -88,6 +123,13 @@ function addBills() {
   closePopup();
 }
 
+function deleteItem(item_id){
+  //alert("Close clicked on " + item_id);
+  var med_id = $("#" + item_id).parent().attr('id');
+  //alert("Close clicked on " + med_id);
+  $("#" + item_id).parent().remove();
+  localStorage.removeItem(med_id);
+}
 
 
 
